@@ -1,0 +1,4 @@
+'''
+auction init
+'''
+import context
