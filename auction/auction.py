@@ -18,24 +18,35 @@ class Auction(BaseAuction):
     Main auction class
     '''
     def __init__(self):
-        self.strategy = None
-        self.users = None
-        self.bids = None
+        self._strategy = None
+        self._users = None
+        self._bids = None
 
-    def get_strategy(self):
-        self.strategy = Strategy()
+    @property
+    def strategy(self):
+        if not self._strategy:
+            self._strategy = Strategy()
+        return self._strategy
 
-    def get_users(self):
-        self.users = Users()
+    @property
+    def users(self):
+        if not self._users:
+            self._users = Users()
+        return self._users
 
-    def get_bids(self):
-        self.bids = Bids()
+    @property
+    def bids(self):
+        if not self._bids:
+            self._bids = Bids()
+        return self._bids
 
-    def get_order(self):
+    @property
+    def order(self):
         pass
 
-    def get_priors(self):
-        bid_prior = self.bids.get_priors()
-        value_prior = self.users.get_value_prior()
+    @property
+    def priors(self):
+        bid_prior = self.bids.priors
+        value_prior = self.users.value_prior
 
         return bid_prior, value_prior

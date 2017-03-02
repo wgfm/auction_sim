@@ -14,7 +14,12 @@ class Bids(BaseBids):
     Bids class
     '''
     def __init__(self):
+        self.bids = []
         pass
 
-    def get_bid_priors(self):
+    @property
+    def priors(self):
         return None
+
+    def place_bid(self, bid):
+        self.bids.append(bid)
